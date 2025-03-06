@@ -88,15 +88,6 @@
 									"name": "website",
 									"type": "String"
 								}
-							},
-							{
-								"source": {
-									"path": "$['company']['name']"
-								},
-								"sink": {
-									"name": "name",
-									"type": "String"
-								}
 							}
 						],
 						"collectionReference": "",
