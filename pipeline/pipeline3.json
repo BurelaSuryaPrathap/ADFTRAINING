@@ -73,36 +73,6 @@
 							},
 							{
 								"source": {
-									"path": "$['address']['street']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['address']['suite']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['address']['city']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['address']['zipcode']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['address']['geo']['lat']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['address']['geo']['lng']"
-								}
-							},
-							{
-								"source": {
 									"path": "$['phone']"
 								},
 								"sink": {
@@ -126,16 +96,6 @@
 								"sink": {
 									"name": "name",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "$['company']['catchPhrase']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['company']['bs']"
 								}
 							}
 						],
