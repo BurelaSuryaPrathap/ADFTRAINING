@@ -2,15 +2,22 @@
 	"name": "AzureSqlTable4",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabase3",
+			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"db_name": {
+				"type": "String"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "staging",
-			"table": "country"
+			"table": {
+				"value": "@dataset().db_name",
+				"type": "Expression"
+			}
 		}
 	}
 }
