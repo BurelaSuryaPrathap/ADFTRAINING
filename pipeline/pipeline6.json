@@ -5,59 +5,29 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "newcontainer/day-1.csv,newcontainer/day-2.csv,newcontainer/Country.csv,newcontainer/Customer.xlsx,newcontainer/day-3.csv,newcontainer/day-4.csv,newcontainer/day-5.csv,newcontainer/Product.csv",
+						"value": "@activity('Get Metadata1').output.childItems",
 						"type": "Expression"
 					},
 					"activities": [
 						{
-							"name": "Get Metadata2",
-							"type": "GetMetadata",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"dataset": {
-									"referenceName": "DelimitedText8",
-									"type": "DatasetReference"
-								},
-								"fieldList": [
-									"childItems"
-								],
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							}
-						},
-						{
 							"name": "If Condition1",
 							"type": "IfCondition",
-							"dependsOn": [
-								{
-									"activity": "Get Metadata2",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@contains(item().name, '.csv')",
+									"value": "@endswith(item().name,'csv')",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
@@ -110,7 +80,10 @@
 												"referenceName": "AzureSqlTable4",
 												"type": "DatasetReference",
 												"parameters": {
-													"db_name": "@activity('Get Metadata2').output.itemName"
+													"db_name": {
+														"value": "item().name",
+														"type": "Expression"
+													}
 												}
 											}
 										]
@@ -135,7 +108,6 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFileName": "*.csv",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -162,7 +134,13 @@
 										"inputs": [
 											{
 												"referenceName": "DelimitedText8",
-												"type": "DatasetReference"
+												"type": "DatasetReference",
+												"parameters": {
+													"file_name": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
+												}
 											}
 										],
 										"outputs": [
@@ -171,7 +149,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"db_name": {
-														"value": "@activity('Get Metadata2').output.itemName",
+														"value": "@item().name",
 														"type": "Expression"
 													}
 												}
@@ -182,6 +160,35 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DelimitedText9",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
 				}
 			}
 		],

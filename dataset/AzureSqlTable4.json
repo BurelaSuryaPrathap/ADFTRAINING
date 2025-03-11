@@ -14,8 +14,11 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "",
-			"table": "@dataset().tableName"
+			"schema": "mystage",
+			"table": {
+				"value": "@dataset().db_name",
+				"type": "Expression"
+			}
 		}
 	}
 }
