@@ -6,9 +6,10 @@
 				"name": "ForEach1",
 				"type": "ForEach",
 				"dependsOn": [],
+				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "[\n    \"newcontainer/day-1.csv\",\n    \"newcontainer/day-2.csv\",\n    \"newcontainer/Country.csv\",\n    \"newcontainer/Customer.xlsx\",\n    \"newcontainer/day-3.csv\",\n    \"newcontainer/day-4.csv\",\n    \"newcontainer/day-5.csv\",\n    \"newcontainer/Product.csv\"\n]",
+						"value": "newcontainer/day-1.csv,newcontainer/day-2.csv,newcontainer/Country.csv,newcontainer/Customer.xlsx,newcontainer/day-3.csv,newcontainer/day-4.csv,newcontainer/day-5.csv,newcontainer/Product.csv",
 						"type": "Expression"
 					},
 					"activities": [
@@ -34,6 +35,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -55,7 +57,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@contains(item().name, '.csv')\n",
+									"value": "@contains(item().name, '.csv')",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
