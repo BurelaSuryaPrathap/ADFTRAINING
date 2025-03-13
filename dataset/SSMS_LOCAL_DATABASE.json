@@ -1,0 +1,12 @@
+{
+	"name": "SSMS_LOCAL_DATABASE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SSMS_LOCAL_DB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
