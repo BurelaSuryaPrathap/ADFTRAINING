@@ -7,11 +7,15 @@
 		"typeProperties": {
 			"server": "JM-DKT-003",
 			"database": "DEPROJECT",
-			"encrypt": "mandatory",
+			"encrypt": "optional",
 			"trustServerCertificate": true,
 			"authenticationType": "SQL",
-			"userName": "suryaprathap",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEZGMzdDQUU4LURDQjQtNENFOC1BMzA2LTQxREQ0NDk2NUY1RV8zYzM2ZTQzMS0yZGNiLTRkMGEtOGUwZC1hMGY1NGY4NDI4ZTciDQp9"
+			"userName": "sa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiZjc3YmZjMC1jMzBmLTRkMzMtODQwMS0zMzkxM2YxODlmYWMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
