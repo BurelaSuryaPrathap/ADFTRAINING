@@ -5,8 +5,20 @@
 			"referenceName": "SNOWFLAKE_LINKED_SERVICE",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"table_name": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "SnowflakeV2Table",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": "RAW",
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
 	}
 }
