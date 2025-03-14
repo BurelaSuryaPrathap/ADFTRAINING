@@ -52,6 +52,12 @@
 		},
 		"SSMS_LOCAL_DB_properties_typeProperties_userName": {
 			"value": "sa"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
 		}
 	}
 }
